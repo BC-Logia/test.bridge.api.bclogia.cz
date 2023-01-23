@@ -1,0 +1,1793 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "bridge.api.bclogia.cz",
+    "version": "1.0"
+  },
+  "paths": {
+    "/v1/firmy/{id}": {
+      "get": {
+        "tags": [
+          "Firmy"
+        ],
+        "summary": "Firma",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID firmy - FirID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCFirmyModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCFirmyModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCFirmyModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/predpis": {
+      "get": {
+        "tags": [
+          "Předpisy"
+        ],
+        "summary": "Předpis",
+        "parameters": [
+          {
+            "name": "Spolid",
+            "in": "query",
+            "description": "Společnost",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ID předpisu",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCPredpis2DetailModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCPredpis2DetailModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCPredpis2DetailModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/predpisy/search": {
+      "get": {
+        "tags": [
+          "Předpisy"
+        ],
+        "summary": "Vyhledávání předpisů",
+        "parameters": [
+          {
+            "name": "Spolid",
+            "in": "query",
+            "description": "Společnost",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PredCisloFrom",
+            "in": "query",
+            "description": "Číslo FA od",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "PredCisloTo",
+            "in": "query",
+            "description": "Číslo FA do",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "PredDatumUZPFrom",
+            "in": "query",
+            "description": "Datum UZP od",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "PredDatumUZPTo",
+            "in": "query",
+            "description": "Datum UZP do",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "DoklRadaID",
+            "in": "query",
+            "description": "Dokladová řada",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Since",
+            "in": "query",
+            "description": "Datum poslední aktualizace od",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Start",
+            "in": "query",
+            "description": "Start (minimální hodnota 0)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "description": "Limit (minimální hodnota 1, maximální hodnota 100)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCPredpis2ListModelBCPaging"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCPredpis2ListModelBCPaging"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCPredpis2ListModelBCPaging"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BCFirmyModel": {
+        "required": [
+          "FirID",
+          "FirORNAZ",
+          "FirSidlo",
+          "HIST",
+          "TS",
+          "TSIns",
+          "upsize_ts"
+        ],
+        "type": "object",
+        "properties": {
+          "FirID": {
+            "type": "integer",
+            "description": "ID firmy",
+            "format": "int32"
+          },
+          "FirICO": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "IČ",
+            "nullable": true
+          },
+          "FirORNAZ": {
+            "maxLength": 40,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název"
+          },
+          "FirORNA1": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Pokračování názvu",
+            "nullable": true
+          },
+          "FirDICO": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "DIČ",
+            "nullable": true
+          },
+          "FirDICEU": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "DIČ EU",
+            "nullable": true
+          },
+          "FirDICKH": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "DIČ KH",
+            "nullable": true
+          },
+          "FirMesto": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Město",
+            "nullable": true
+          },
+          "FirUlice": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Ulice",
+            "nullable": true
+          },
+          "FirCP": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string",
+            "description": "ČP",
+            "nullable": true
+          },
+          "FirPSC": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string",
+            "description": "PSČ",
+            "nullable": true
+          },
+          "FirStat": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Stát",
+            "nullable": true
+          },
+          "FirSidlo": {
+            "type": "boolean",
+            "description": "Sídlo"
+          },
+          "FirPoboc": {
+            "type": "integer",
+            "description": "Provozovna",
+            "format": "int32",
+            "nullable": true
+          },
+          "FirTel": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Telefon",
+            "nullable": true
+          },
+          "FirEmail": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "e-mail",
+            "nullable": true
+          },
+          "FirUcet": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Bankovní účet",
+            "nullable": true
+          },
+          "FirBanka": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Banka",
+            "nullable": true
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "Datum/čas založení záznamu",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "Datum/čas poslední aktualizace záznamu",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "TS",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "Příznak historického záznamu"
+          },
+          "FirExter": {
+            "maxLength": 12,
+            "minLength": 0,
+            "type": "string",
+            "description": "Exter",
+            "nullable": true
+          },
+          "FirWeb": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "description": "Web",
+            "nullable": true
+          },
+          "FirUcetIBAN": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "IBAN",
+            "nullable": true
+          },
+          "FirBankaSWIFT": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "SWIFT",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Firma"
+      },
+      "BCPredpis2CastkyRekapModel": {
+        "required": [
+          "HIST",
+          "PredID",
+          "RekapCastka",
+          "RekapMena",
+          "SpolID",
+          "TS",
+          "TSIns",
+          "upsize_ts"
+        ],
+        "type": "object",
+        "properties": {
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID faktury",
+            "format": "int32"
+          },
+          "RekapMena": {
+            "maxLength": 3,
+            "minLength": 0,
+            "type": "string",
+            "description": "Měna"
+          },
+          "RekapCastka": {
+            "type": "number",
+            "description": "Částka celkem",
+            "format": "double"
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "Datum/čas založení záznamu",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "Datum/čas poslední aktualizace záznamu",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "TS",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "Příznak historického záznamu"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis rekapitulace částek"
+      },
+      "BCPredpis2DenikModel": {
+        "required": [
+          "DenHod",
+          "DenHodZ1",
+          "DenID",
+          "DenKurs1",
+          "DenMimoDPH",
+          "DenPosunDPH",
+          "DenRadek",
+          "HIST",
+          "Parov",
+          "PredID",
+          "SpolID",
+          "StredID",
+          "TS",
+          "TSIns",
+          "UcUcetDL",
+          "UcUcetMD",
+          "upsize_ts"
+        ],
+        "type": "object",
+        "properties": {
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "DenID": {
+            "type": "integer",
+            "description": "ID",
+            "format": "int32"
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID faktury",
+            "format": "int32"
+          },
+          "DenRadek": {
+            "type": "integer",
+            "description": "Řádek dokladu",
+            "format": "int32"
+          },
+          "StredID": {
+            "type": "integer",
+            "description": "Středisko",
+            "format": "int32"
+          },
+          "PohCislo": {
+            "type": "integer",
+            "description": "Číslo pohybu",
+            "format": "int32",
+            "nullable": true
+          },
+          "UcUcetMD": {
+            "maxLength": 12,
+            "minLength": 0,
+            "type": "string",
+            "description": "Účet MD"
+          },
+          "UcUcetDL": {
+            "maxLength": 12,
+            "minLength": 0,
+            "type": "string",
+            "description": "Účet DAL"
+          },
+          "DenHod": {
+            "type": "number",
+            "description": "Částka",
+            "format": "double"
+          },
+          "DenUcast": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Účastník operace",
+            "nullable": true
+          },
+          "SKDPH": {
+            "type": "integer",
+            "description": "Skupina DPH",
+            "format": "int32",
+            "nullable": true
+          },
+          "DrDph": {
+            "type": "integer",
+            "description": "Druh DPH: 0 - Bez DPH, 1 - Snížená sazba, 2 - Základní sazba, 3 - Třetí sazba",
+            "format": "int32",
+            "nullable": true
+          },
+          "DPHProc": {
+            "type": "number",
+            "description": "% DPH",
+            "format": "double",
+            "nullable": true
+          },
+          "VykRadDPH": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string",
+            "description": "Řádek výkazu DPH",
+            "nullable": true
+          },
+          "DenVarSy": {
+            "type": "number",
+            "description": "VS",
+            "format": "double",
+            "nullable": true
+          },
+          "Parov": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Párování: Ne, Dod, Odb, UhD, UhO"
+          },
+          "CIZAK": {
+            "maxLength": 16,
+            "minLength": 0,
+            "type": "string",
+            "description": "Zakázka",
+            "nullable": true
+          },
+          "DenPozn": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "description": "Poznámka",
+            "nullable": true
+          },
+          "DenOstPar": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string",
+            "description": "Ostatní párování",
+            "nullable": true
+          },
+          "DenHodZ1": {
+            "type": "number",
+            "description": "Částka v zahraniční měně",
+            "format": "double"
+          },
+          "DenMena1": {
+            "maxLength": 3,
+            "minLength": 0,
+            "type": "string",
+            "description": "Měna",
+            "nullable": true
+          },
+          "DenKurs1": {
+            "type": "number",
+            "description": "Kurz",
+            "format": "double"
+          },
+          "DenPartner": {
+            "type": "integer",
+            "description": "Partner",
+            "format": "int32",
+            "nullable": true
+          },
+          "UcDCPAUID": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string",
+            "description": "Prostředek/akce",
+            "nullable": true
+          },
+          "DenPorDPH": {
+            "type": "integer",
+            "description": "Pořadí DDP",
+            "format": "int32",
+            "nullable": true
+          },
+          "DenMimoDPH": {
+            "type": "boolean",
+            "description": "Mimo DPH A/N"
+          },
+          "DenPosunDPH": {
+            "type": "boolean",
+            "description": "Posun DPH A/N"
+          },
+          "DenValueDate": {
+            "type": "string",
+            "description": "Valuta platby",
+            "format": "date-time",
+            "nullable": true
+          },
+          "AktNazev": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Aktivita",
+            "nullable": true
+          },
+          "NaklVynNazev": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Typ N/V",
+            "nullable": true
+          },
+          "FirID": {
+            "type": "integer",
+            "description": "Firma",
+            "format": "int32",
+            "nullable": true
+          },
+          "DenSpecSy": {
+            "type": "number",
+            "description": "SS",
+            "format": "double",
+            "nullable": true
+          },
+          "DenDoklDanText": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Číslo daňového dokladu text",
+            "nullable": true
+          },
+          "ClenID": {
+            "type": "integer",
+            "description": "Členění pro souhrnné hlášení: 1 - zboží, 2 - služba",
+            "format": "int32",
+            "nullable": true
+          },
+          "DenPoznLong": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "description": "Poznámka dlouhá",
+            "nullable": true
+          },
+          "ZbKod": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Kód zboží (celní sazebník)",
+            "nullable": true
+          },
+          "DenZbMnozstvi": {
+            "type": "number",
+            "description": "Množství zboží",
+            "format": "double",
+            "nullable": true
+          },
+          "DenZbMJ": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string",
+            "description": "MJ zboží",
+            "nullable": true
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "Datum/čas založení záznamu",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "Datum/čas poslední aktualizace záznamu",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "TS",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "Příznak historického záznamu"
+          },
+          "UcDCPANazev": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Číslo P/A",
+            "nullable": true
+          },
+          "DPHTypID": {
+            "type": "integer",
+            "description": "Typ DPH (bez DPH, DPH 0%, osvobozeno, přenos DPH, přenos DPH samozdanění)",
+            "format": "int32",
+            "nullable": true
+          },
+          "NAZAK": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název zakázky",
+            "nullable": true
+          },
+          "AktPopis": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "description": "Aktivita název",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis deník"
+      },
+      "BCPredpis2DetailModel": {
+        "required": [
+          "PredID",
+          "SpolID"
+        ],
+        "type": "object",
+        "properties": {
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID předpisu",
+            "format": "int32"
+          },
+          "Predpis": {
+            "$ref": "#/components/schemas/BCPredpis2Model"
+          },
+          "Firma": {
+            "$ref": "#/components/schemas/BCFirmyModel"
+          },
+          "Denik": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCPredpis2DenikModel"
+            },
+            "description": "Deník",
+            "nullable": true
+          },
+          "CastkyRekap": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCPredpis2CastkyRekapModel"
+            },
+            "description": "Rekapitulace částek",
+            "nullable": true
+          },
+          "DPHRekap": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCPredpis2DPHRekapModel"
+            },
+            "description": "Rekapitulace DPH",
+            "nullable": true
+          },
+          "Radky": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCPredpis2RadkyModel"
+            },
+            "description": "Řádky předpisu",
+            "nullable": true
+          },
+          "RadkyDenik": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCPredpis2RadkyDenikModel"
+            },
+            "description": "Vazba deník - řádky předpisu",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis detail"
+      },
+      "BCPredpis2DPHRekapModel": {
+        "required": [
+          "CastkaDPH",
+          "CastkaZaklad",
+          "DPHProc",
+          "DrDph",
+          "HIST",
+          "Mena",
+          "PredID",
+          "PredRekDPHID",
+          "SKDPH",
+          "SpolID",
+          "TS",
+          "TSIns",
+          "upsize_ts"
+        ],
+        "type": "object",
+        "properties": {
+          "PredRekDPHID": {
+            "type": "integer",
+            "description": "ID",
+            "format": "int32"
+          },
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID faktury",
+            "format": "int32"
+          },
+          "Mena": {
+            "maxLength": 3,
+            "minLength": 0,
+            "type": "string",
+            "description": "Měna"
+          },
+          "SKDPH": {
+            "type": "integer",
+            "description": "Skupina DPH",
+            "format": "int32"
+          },
+          "DrDph": {
+            "type": "integer",
+            "description": "Druh DPH: 0 - Bez DPH, 1 - Snížená sazba, 2 - Základní sazba, 3 - Třetí sazba",
+            "format": "int32"
+          },
+          "DPHProc": {
+            "type": "number",
+            "description": "% DPH",
+            "format": "double"
+          },
+          "CastkaZaklad": {
+            "type": "number",
+            "description": "Částka základu daně",
+            "format": "double"
+          },
+          "CastkaDPH": {
+            "type": "number",
+            "description": "Částka daň",
+            "format": "double"
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "Datum/čas založení záznamu",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "Datum/čas poslední aktualizace záznamu",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "TS",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "Příznak historického záznamu"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis rekapitulace DPH"
+      },
+      "BCPredpis2ListModel": {
+        "required": [
+          "PredDatumUZP"
+        ],
+        "type": "object",
+        "properties": {
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID předpisu",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredCislo": {
+            "type": "number",
+            "description": "Číslo FA",
+            "format": "double",
+            "nullable": true
+          },
+          "PredCisloDod": {
+            "type": "number",
+            "description": "Číslo FA dodavatele",
+            "format": "double",
+            "nullable": true
+          },
+          "PredTypID": {
+            "type": "integer",
+            "description": "Typ faktury: 1 - Faktura vydaná, 2 - Faktura přijatá",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredDruhShortName": {
+            "maxLength": 2,
+            "minLength": 0,
+            "type": "string",
+            "description": "Druh faktury",
+            "nullable": true
+          },
+          "DoklRadaID": {
+            "type": "integer",
+            "description": "Dokladová řada",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredFirID": {
+            "type": "integer",
+            "description": "Firma",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredDatumUZP": {
+            "type": "string",
+            "description": "Datum UZP",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "Datum/čas poslední aktualizace záznamu",
+            "format": "date-time",
+            "nullable": true
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "TS",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis"
+      },
+      "BCPredpis2ListModelBCPaging": {
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCPredpis2ListModel"
+            },
+            "description": "Seznam záznamů",
+            "nullable": true
+          },
+          "TotalRecords": {
+            "type": "integer",
+            "description": "Celkový počet záznamů",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data včetně stránkování"
+      },
+      "BCPredpis2Model": {
+        "required": [
+          "DavkaUseMainSml",
+          "HIST",
+          "Poboc",
+          "PredAutor",
+          "PredCislo",
+          "PredDatumSpl",
+          "PredDatumUZP",
+          "PredDatumVyst",
+          "PredDruhShortName",
+          "PredFirID",
+          "PredID",
+          "PredKurz",
+          "PredMena",
+          "PredSazPen",
+          "PredTypID",
+          "PredUpominat",
+          "PredVarSy",
+          "PredZahr",
+          "SpolID",
+          "TS",
+          "TSIns",
+          "upsize_ts",
+          "ZpPlaceni"
+        ],
+        "type": "object",
+        "properties": {
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID předpisu",
+            "format": "int32"
+          },
+          "PredCislo": {
+            "type": "number",
+            "description": "Číslo FA",
+            "format": "double"
+          },
+          "PredCisloDod": {
+            "type": "number",
+            "description": "Číslo FA dodavatele",
+            "format": "double",
+            "nullable": true
+          },
+          "PredVarSy": {
+            "type": "number",
+            "description": "VS",
+            "format": "double"
+          },
+          "PredObjed": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Číslo objednávky",
+            "nullable": true
+          },
+          "PredTypID": {
+            "type": "integer",
+            "description": "Typ faktury: 1 - Faktura vydaná, 2 - Faktura přijatá",
+            "format": "int32"
+          },
+          "PredDruhShortName": {
+            "maxLength": 2,
+            "minLength": 0,
+            "type": "string",
+            "description": "Druh faktury"
+          },
+          "DoklRadaID": {
+            "type": "integer",
+            "description": "Dokladová řada",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredZahr": {
+            "type": "boolean",
+            "description": "Zahraniční FA - A/N"
+          },
+          "PredUcStavID": {
+            "type": "integer",
+            "description": "Účetní stav faktury : 1 - Pořízený, 2 - Odsouhlasený, 3 - Nezaúčtovaný, 4 - Zaúčtovaný",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredFirID": {
+            "type": "integer",
+            "description": "Firma",
+            "format": "int32"
+          },
+          "PredFirmaUcet": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Firma - účet",
+            "nullable": true
+          },
+          "PredFirmaBanka": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Firma - banka",
+            "nullable": true
+          },
+          "PredDatumUZP": {
+            "type": "string",
+            "description": "Datum UZP",
+            "format": "date-time"
+          },
+          "PredDatumVyst": {
+            "type": "string",
+            "description": "Datum vystavení",
+            "format": "date-time"
+          },
+          "PredDatumSpl": {
+            "type": "string",
+            "description": "Datum splatnosti",
+            "format": "date-time"
+          },
+          "PredDatumEvid": {
+            "type": "string",
+            "description": "Datum evidence",
+            "format": "date-time",
+            "nullable": true
+          },
+          "PredKonSy": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Konstantní symbol",
+            "nullable": true
+          },
+          "PredSpecSy": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Specifický symbol",
+            "nullable": true
+          },
+          "PredKurz": {
+            "type": "number",
+            "description": "Kurz",
+            "format": "double"
+          },
+          "PredMena": {
+            "maxLength": 3,
+            "minLength": 0,
+            "type": "string",
+            "description": "Měna"
+          },
+          "PredMenaZahr": {
+            "maxLength": 3,
+            "minLength": 0,
+            "type": "string",
+            "description": "Zahraniční měna",
+            "nullable": true
+          },
+          "PredSazPen": {
+            "type": "number",
+            "description": "Sazba penále",
+            "format": "double"
+          },
+          "ZpPlaceni": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Způsob placení"
+          },
+          "CIZAK": {
+            "maxLength": 16,
+            "minLength": 0,
+            "type": "string",
+            "description": "Zakázka - číslo",
+            "nullable": true
+          },
+          "NAZAK": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Zakázka - název",
+            "nullable": true
+          },
+          "PredAutor": {
+            "maxLength": 6,
+            "minLength": 0,
+            "type": "string",
+            "description": "Autor - osobní číslo"
+          },
+          "PredDealer": {
+            "maxLength": 6,
+            "minLength": 0,
+            "type": "string",
+            "description": "Obchodník - osobní číslo",
+            "nullable": true
+          },
+          "PredUpominat": {
+            "type": "boolean",
+            "description": "Upomínat A/N"
+          },
+          "PredDatumUct": {
+            "type": "string",
+            "description": "Datum účtování",
+            "format": "date-time",
+            "nullable": true
+          },
+          "PredUctovalID": {
+            "maxLength": 6,
+            "minLength": 0,
+            "type": "string",
+            "description": "Účtoval - osobní číslo",
+            "nullable": true
+          },
+          "Poboc": {
+            "type": "integer",
+            "description": "Pobočka",
+            "format": "int32"
+          },
+          "PredCisloText": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "description": "Číslo faktury text",
+            "nullable": true
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "Datum/čas založení záznamu",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "Datum/čas poslední aktualizace záznamu",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "TS",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "Příznak historického záznamu"
+          },
+          "PredDatumOper": {
+            "type": "string",
+            "description": "Datum operace předpisu",
+            "format": "date-time",
+            "nullable": true
+          },
+          "PredDatumDPH": {
+            "type": "string",
+            "description": "Datum DPH předpisu",
+            "format": "date-time",
+            "nullable": true
+          },
+          "PredPoznamka": {
+            "maxLength": -1,
+            "minLength": 0,
+            "type": "string",
+            "description": "Poznámka",
+            "nullable": true
+          },
+          "PredTextRek": {
+            "maxLength": -1,
+            "minLength": 0,
+            "type": "string",
+            "description": "Text daňové rekapitulace",
+            "nullable": true
+          },
+          "PredVystavil": {
+            "maxLength": -1,
+            "minLength": 0,
+            "type": "string",
+            "description": "Vystavil",
+            "nullable": true
+          },
+          "PredUcet": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Bankovní účet",
+            "nullable": true
+          },
+          "PredUcetIBAN": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "IBAN",
+            "nullable": true
+          },
+          "PredBanka": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Banka",
+            "nullable": true
+          },
+          "PredBankaSWIFT": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "SWIFT",
+            "nullable": true
+          },
+          "PredBankaPoboc": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Pobočka",
+            "nullable": true
+          },
+          "VendorNazev": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Vendor název",
+            "nullable": true
+          },
+          "PredOrNaz": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název firmy",
+            "nullable": true
+          },
+          "PredOrNa1": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Pokračování názvu firmy",
+            "nullable": true
+          },
+          "PredOrUlice": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "description": "Ulice",
+            "nullable": true
+          },
+          "PredOrMesto": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Město",
+            "nullable": true
+          },
+          "PredOrICO": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "IČ",
+            "nullable": true
+          },
+          "PredOrDIC": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "description": "DIČ",
+            "nullable": true
+          },
+          "DavkaUseMainSml": {
+            "type": "boolean",
+            "description": "Při tvorbě FA - použít hlavní smlouvu A/N"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis"
+      },
+      "BCPredpis2RadkyDenikModel": {
+        "required": [
+          "DenID",
+          "HIST",
+          "ID",
+          "SpolID",
+          "TS",
+          "TSIns",
+          "upsize_ts"
+        ],
+        "type": "object",
+        "properties": {
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "ID": {
+            "type": "integer",
+            "description": "ID řádku dokladu",
+            "format": "int32"
+          },
+          "DenID": {
+            "type": "integer",
+            "description": "ID dokladu",
+            "format": "int32"
+          },
+          "Mnozstvi": {
+            "type": "number",
+            "description": "Množství",
+            "format": "double",
+            "nullable": true
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "TSIns",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "TS",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "upsize_ts",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "HIST"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis vazba deník - řádek předpisu"
+      },
+      "BCPredpis2RadkyModel": {
+        "required": [
+          "HIST",
+          "ID",
+          "PredID",
+          "PredObsPoradi",
+          "SpolID",
+          "TS",
+          "TSIns",
+          "upsize_ts",
+          "UseKV",
+          "UseStred"
+        ],
+        "type": "object",
+        "properties": {
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID faktury",
+            "format": "int32"
+          },
+          "PredObsPoradi": {
+            "type": "integer",
+            "description": "Pořadí řádku faktury",
+            "format": "int32"
+          },
+          "ID": {
+            "type": "integer",
+            "description": "ID řádku",
+            "format": "int32"
+          },
+          "PredObsFARTyp": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Typ řádku (B - běžný, H - text, C - zaplacená záloha, V - haléřové vyrovnání)",
+            "nullable": true
+          },
+          "PredObsText": {
+            "maxLength": -1,
+            "minLength": 0,
+            "type": "string",
+            "description": "Text řádku",
+            "nullable": true
+          },
+          "PredObsMnoz": {
+            "type": "number",
+            "description": "Množství",
+            "format": "double",
+            "nullable": true
+          },
+          "PredObsMJ": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string",
+            "description": "MJ",
+            "nullable": true
+          },
+          "PredObsCenaMJ": {
+            "type": "number",
+            "description": "cena / MJ",
+            "format": "double",
+            "nullable": true
+          },
+          "PredObsCenaCelkem": {
+            "type": "number",
+            "description": "Cena celkem",
+            "format": "double",
+            "nullable": true
+          },
+          "PredObsDPH": {
+            "type": "number",
+            "description": "Sazba DPH",
+            "format": "double",
+            "nullable": true
+          },
+          "PredObsCenaMJSDPH": {
+            "type": "number",
+            "description": "Cena / MJ s DPH",
+            "format": "double",
+            "nullable": true
+          },
+          "PredObsCenaCelkemSDPH": {
+            "type": "number",
+            "description": "Cena s DPH celkem",
+            "format": "double",
+            "nullable": true
+          },
+          "PredObsMnozT": {
+            "type": "number",
+            "description": "Množství v t",
+            "format": "double",
+            "nullable": true
+          },
+          "PredCisloZaloha": {
+            "type": "number",
+            "description": "Číslo zálohové faktury",
+            "format": "double",
+            "nullable": true
+          },
+          "PredCisloDD1": {
+            "type": "number",
+            "description": "Číslo daňového dokladu k platbě",
+            "format": "double",
+            "nullable": true
+          },
+          "PredObsTPF": {
+            "type": "integer",
+            "description": "TPF",
+            "format": "int32",
+            "nullable": true
+          },
+          "StredID": {
+            "type": "integer",
+            "description": "Středisko",
+            "format": "int32",
+            "nullable": true
+          },
+          "StredN": {
+            "type": "integer",
+            "description": "Nákladové středisko",
+            "format": "int32",
+            "nullable": true
+          },
+          "SKDPH": {
+            "type": "integer",
+            "description": "Skupina DPH",
+            "format": "int32",
+            "nullable": true
+          },
+          "DrDph": {
+            "type": "integer",
+            "description": "druh DPH (0 - bez DPH, 1 - snížená sazba, 2 - základní sazba)",
+            "format": "int32",
+            "nullable": true
+          },
+          "DPHProc": {
+            "type": "number",
+            "description": "% DPH",
+            "format": "double",
+            "nullable": true
+          },
+          "CIZAK": {
+            "maxLength": 16,
+            "minLength": 0,
+            "type": "string",
+            "description": "Zakázka",
+            "nullable": true
+          },
+          "NAZAK": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název zakázky",
+            "nullable": true
+          },
+          "AktID": {
+            "type": "integer",
+            "description": "Aktivita",
+            "format": "int32",
+            "nullable": true
+          },
+          "AktNazev": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název aktivity",
+            "nullable": true
+          },
+          "OstPar": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string",
+            "description": "Ostatní párování",
+            "nullable": true
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "TSIns",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "TS",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "upsize_ts",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "HIST"
+          },
+          "UseKV": {
+            "type": "boolean",
+            "description": "Úsek KV DPH"
+          },
+          "AktPopis": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "description": "Aktivita poopis",
+            "nullable": true
+          },
+          "UseStred": {
+            "type": "boolean",
+            "description": "UseStred"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis řádky"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Authorization header using the Bearer scheme.",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
