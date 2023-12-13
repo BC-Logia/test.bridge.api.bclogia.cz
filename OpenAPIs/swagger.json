@@ -83,6 +83,26 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -156,6 +176,26 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
@@ -289,6 +329,244 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roadplan/likvmista": {
+      "get": {
+        "tags": [
+          "RoadPlan"
+        ],
+        "summary": "Likvidační místa",
+        "parameters": [
+          {
+            "name": "Spolid",
+            "in": "query",
+            "description": "Společnost",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Start",
+            "in": "query",
+            "description": "Start (minimální hodnota 0)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "description": "Limit (minimální hodnota 1, maximální hodnota 100)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCRoadPlanLikvMistaModelBCPaging"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCRoadPlanLikvMistaModelBCPaging"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCRoadPlanLikvMistaModelBCPaging"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roadplan/jizdy": {
+      "get": {
+        "tags": [
+          "RoadPlan"
+        ],
+        "summary": "Jízdy",
+        "parameters": [
+          {
+            "name": "Spolid",
+            "in": "query",
+            "description": "Společnost",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "DatumOd",
+            "in": "query",
+            "description": "Datum od",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "DatumDo",
+            "in": "query",
+            "description": "Datum do",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Start",
+            "in": "query",
+            "description": "Start (minimální hodnota 0)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "description": "Limit (minimální hodnota 1, maximální hodnota 100)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCRoadPlanJizdyModelBCPaging"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCRoadPlanJizdyModelBCPaging"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BCRoadPlanJizdyModelBCPaging"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
@@ -490,6 +768,13 @@
             "type": "string",
             "description": "SWIFT",
             "nullable": true
+          },
+          "FirStatKodA3": {
+            "maxLength": 3,
+            "minLength": 0,
+            "type": "string",
+            "description": "Stát - zkratka",
+            "nullable": true
           }
         },
         "additionalProperties": false,
@@ -551,6 +836,93 @@
         },
         "additionalProperties": false,
         "description": "Předpis rekapitulace částek"
+      },
+      "BCPredpis2DPHRekapModel": {
+        "required": [
+          "CastkaDPH",
+          "CastkaZaklad",
+          "DPHProc",
+          "DrDph",
+          "HIST",
+          "Mena",
+          "PredID",
+          "PredRekDPHID",
+          "SKDPH",
+          "SpolID",
+          "TS",
+          "TSIns",
+          "upsize_ts"
+        ],
+        "type": "object",
+        "properties": {
+          "PredRekDPHID": {
+            "type": "integer",
+            "description": "ID",
+            "format": "int32"
+          },
+          "SpolID": {
+            "type": "integer",
+            "description": "ID společnosti",
+            "format": "int32"
+          },
+          "PredID": {
+            "type": "integer",
+            "description": "ID faktury",
+            "format": "int32"
+          },
+          "Mena": {
+            "maxLength": 3,
+            "minLength": 0,
+            "type": "string",
+            "description": "Měna"
+          },
+          "SKDPH": {
+            "type": "integer",
+            "description": "Skupina DPH",
+            "format": "int32"
+          },
+          "DrDph": {
+            "type": "integer",
+            "description": "Druh DPH: 0 - Bez DPH, 1 - Snížená sazba, 2 - Základní sazba, 3 - Třetí sazba",
+            "format": "int32"
+          },
+          "DPHProc": {
+            "type": "number",
+            "description": "% DPH",
+            "format": "double"
+          },
+          "CastkaZaklad": {
+            "type": "number",
+            "description": "Částka základu daně",
+            "format": "double"
+          },
+          "CastkaDPH": {
+            "type": "number",
+            "description": "Částka daň",
+            "format": "double"
+          },
+          "TSIns": {
+            "type": "string",
+            "description": "Datum/čas založení záznamu",
+            "format": "date-time"
+          },
+          "TS": {
+            "type": "string",
+            "description": "Datum/čas poslední aktualizace záznamu",
+            "format": "date-time"
+          },
+          "upsize_ts": {
+            "type": "string",
+            "description": "TS",
+            "format": "byte"
+          },
+          "HIST": {
+            "type": "boolean",
+            "description": "Příznak historického záznamu"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Předpis rekapitulace DPH"
       },
       "BCPredpis2DenikModel": {
         "required": [
@@ -915,97 +1287,13 @@
             },
             "description": "Vazba deník - řádky předpisu",
             "nullable": true
+          },
+          "KonPr": {
+            "$ref": "#/components/schemas/BCFirmyModel"
           }
         },
         "additionalProperties": false,
         "description": "Předpis detail"
-      },
-      "BCPredpis2DPHRekapModel": {
-        "required": [
-          "CastkaDPH",
-          "CastkaZaklad",
-          "DPHProc",
-          "DrDph",
-          "HIST",
-          "Mena",
-          "PredID",
-          "PredRekDPHID",
-          "SKDPH",
-          "SpolID",
-          "TS",
-          "TSIns",
-          "upsize_ts"
-        ],
-        "type": "object",
-        "properties": {
-          "PredRekDPHID": {
-            "type": "integer",
-            "description": "ID",
-            "format": "int32"
-          },
-          "SpolID": {
-            "type": "integer",
-            "description": "ID společnosti",
-            "format": "int32"
-          },
-          "PredID": {
-            "type": "integer",
-            "description": "ID faktury",
-            "format": "int32"
-          },
-          "Mena": {
-            "maxLength": 3,
-            "minLength": 0,
-            "type": "string",
-            "description": "Měna"
-          },
-          "SKDPH": {
-            "type": "integer",
-            "description": "Skupina DPH",
-            "format": "int32"
-          },
-          "DrDph": {
-            "type": "integer",
-            "description": "Druh DPH: 0 - Bez DPH, 1 - Snížená sazba, 2 - Základní sazba, 3 - Třetí sazba",
-            "format": "int32"
-          },
-          "DPHProc": {
-            "type": "number",
-            "description": "% DPH",
-            "format": "double"
-          },
-          "CastkaZaklad": {
-            "type": "number",
-            "description": "Částka základu daně",
-            "format": "double"
-          },
-          "CastkaDPH": {
-            "type": "number",
-            "description": "Částka daň",
-            "format": "double"
-          },
-          "TSIns": {
-            "type": "string",
-            "description": "Datum/čas založení záznamu",
-            "format": "date-time"
-          },
-          "TS": {
-            "type": "string",
-            "description": "Datum/čas poslední aktualizace záznamu",
-            "format": "date-time"
-          },
-          "upsize_ts": {
-            "type": "string",
-            "description": "TS",
-            "format": "byte"
-          },
-          "HIST": {
-            "type": "boolean",
-            "description": "Příznak historického záznamu"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Předpis rekapitulace DPH"
       },
       "BCPredpis2ListModel": {
         "required": [
@@ -1077,6 +1365,12 @@
             "type": "string",
             "description": "TS",
             "format": "byte",
+            "nullable": true
+          },
+          "PredFirIDKonPr": {
+            "type": "integer",
+            "description": "Konečný příjemce",
+            "format": "int32",
             "nullable": true
           }
         },
@@ -1469,6 +1763,24 @@
           "DavkaUseMainSml": {
             "type": "boolean",
             "description": "Při tvorbě FA - použít hlavní smlouvu A/N"
+          },
+          "PredStredDod": {
+            "type": "integer",
+            "description": "Středisko dodavatele",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredStredOdb": {
+            "type": "integer",
+            "description": "Středisko odběratele",
+            "format": "int32",
+            "nullable": true
+          },
+          "PredFirIDKonPr": {
+            "type": "integer",
+            "description": "Konečný příjemce",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false,
@@ -1737,16 +2049,390 @@
             "maxLength": 255,
             "minLength": 0,
             "type": "string",
-            "description": "Aktivita poopis",
+            "description": "Aktivita popis",
             "nullable": true
           },
           "UseStred": {
             "type": "boolean",
             "description": "UseStred"
+          },
+          "NaklVynID": {
+            "type": "integer",
+            "description": "Typ nákladu/výnosu",
+            "format": "int32",
+            "nullable": true
+          },
+          "NaklVynNazev": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název typu nákladu/výnosu",
+            "nullable": true
+          },
+          "NaklVynPopis": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "description": "Typ nákladu/výnosu popis",
+            "nullable": true
           }
         },
         "additionalProperties": false,
         "description": "Předpis řádky"
+      },
+      "BCRoadPlanAdresaModel": {
+        "required": [
+          "zeme"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identifikátor adresy",
+            "format": "int32",
+            "nullable": true
+          },
+          "ulice": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Ulice",
+            "nullable": true
+          },
+          "cislo": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string",
+            "description": "Číslo popisné",
+            "nullable": true
+          },
+          "obec": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Obec",
+            "nullable": true
+          },
+          "psc": {
+            "maxLength": 6,
+            "minLength": 0,
+            "type": "string",
+            "description": "Poštovní směrovací číslo",
+            "nullable": true
+          },
+          "zeme": {
+            "maxLength": 2,
+            "minLength": 0,
+            "type": "string",
+            "description": "Země"
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanAdresaModel"
+      },
+      "BCRoadPlanGPSModel": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "Zeměpisná délka",
+            "format": "double",
+            "nullable": true
+          },
+          "y": {
+            "type": "number",
+            "description": "Zeměpisná šířka",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanGPSModel"
+      },
+      "BCRoadPlanJizdyModel": {
+        "required": [
+          "cilJizdy",
+          "datumRealizace",
+          "id",
+          "odpady",
+          "pocatekJizdy",
+          "smlouva",
+          "zakaznik"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identifikátor jízdy",
+            "format": "int32"
+          },
+          "posledniZmena": {
+            "type": "string",
+            "description": "Datum a čas poslední změny",
+            "format": "date-time",
+            "nullable": true
+          },
+          "provozovna": {
+            "type": "integer",
+            "description": "Kód provozovny",
+            "format": "int32",
+            "nullable": true
+          },
+          "vozidloEvc": {
+            "type": "integer",
+            "description": "Evidenční číslo vozidla",
+            "format": "int32",
+            "nullable": true
+          },
+          "datumRealizace": {
+            "type": "string",
+            "description": "Datum realizace",
+            "format": "date-time"
+          },
+          "smlouva": {
+            "$ref": "#/components/schemas/BCRoadPlanSmlouvaModel"
+          },
+          "zakaznik": {
+            "$ref": "#/components/schemas/BCRoadPlanZakaznikModel"
+          },
+          "pocatekJizdy": {
+            "$ref": "#/components/schemas/BCRoadPlanStanoviste"
+          },
+          "cilJizdy": {
+            "$ref": "#/components/schemas/BCRoadPlanStanoviste"
+          },
+          "odpady": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCRoadPlanOdpadyModel"
+            },
+            "description": "Odpady"
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanJizdyModel"
+      },
+      "BCRoadPlanJizdyModelBCPaging": {
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCRoadPlanJizdyModel"
+            },
+            "description": "Seznam záznamů",
+            "nullable": true
+          },
+          "TotalRecords": {
+            "type": "integer",
+            "description": "Celkový počet záznamů",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data včetně stránkování"
+      },
+      "BCRoadPlanLikvMistaModel": {
+        "required": [
+          "id",
+          "jeVlastni",
+          "nazev",
+          "odpady"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identifikátor",
+            "format": "int32"
+          },
+          "nazev": {
+            "maxLength": 40,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název"
+          },
+          "provozovna": {
+            "type": "integer",
+            "description": "Kód provozovny",
+            "format": "int32",
+            "nullable": true
+          },
+          "gps": {
+            "$ref": "#/components/schemas/BCRoadPlanGPSModel"
+          },
+          "adresa": {
+            "$ref": "#/components/schemas/BCRoadPlanAdresaModel"
+          },
+          "jeVlastni": {
+            "type": "boolean",
+            "description": "Informace, zda se jedná o likvidační místo organizace"
+          },
+          "odpady": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCRoadPlanOdpadyModel"
+            },
+            "description": "Odpady"
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanLikvMistaModel"
+      },
+      "BCRoadPlanLikvMistaModelBCPaging": {
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BCRoadPlanLikvMistaModel"
+            },
+            "description": "Seznam záznamů",
+            "nullable": true
+          },
+          "TotalRecords": {
+            "type": "integer",
+            "description": "Celkový počet záznamů",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data včetně stránkování"
+      },
+      "BCRoadPlanOdpadyModel": {
+        "required": [
+          "druhOdpadu"
+        ],
+        "type": "object",
+        "properties": {
+          "druhOdpadu": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "description": "Druhu odpadu"
+          },
+          "kodNakladani": {
+            "maxLength": 4,
+            "minLength": 0,
+            "type": "string",
+            "description": "Kód nakládání",
+            "nullable": true
+          },
+          "provozovna": {
+            "type": "integer",
+            "description": "Kód provozovny",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanOdpadyModel"
+      },
+      "BCRoadPlanSmlouvaModel": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identifikátor smlouvy",
+            "format": "int32"
+          },
+          "cislo": {
+            "type": "integer",
+            "description": "Číslo smlouvy",
+            "format": "int32",
+            "nullable": true
+          },
+          "platnostOd": {
+            "type": "string",
+            "description": "Začátek platnosti smlouvy",
+            "format": "date-time",
+            "nullable": true
+          },
+          "platnostDo": {
+            "type": "string",
+            "description": "Konec platnosti smlouvy",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanSmlouvaModel"
+      },
+      "BCRoadPlanStanoviste": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/BCRoadPlanStanovisteType"
+          },
+          "id": {
+            "type": "integer",
+            "description": "Identifikátor",
+            "format": "int32",
+            "nullable": true
+          },
+          "nazev": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název bodu jízdy",
+            "nullable": true
+          },
+          "gps": {
+            "$ref": "#/components/schemas/BCRoadPlanGPSModel"
+          },
+          "adresa": {
+            "$ref": "#/components/schemas/BCRoadPlanAdresaModel"
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanStanoviste"
+      },
+      "BCRoadPlanStanovisteType": {
+        "enum": [
+          1,
+          2,
+          6,
+          10
+        ],
+        "type": "integer",
+        "description": "BCRoadPlanStanovisteType",
+        "format": "int32"
+      },
+      "BCRoadPlanZakaznikModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identifikátor zákazníka",
+            "format": "int32",
+            "nullable": true
+          },
+          "nazev": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "description": "Název zákazníka",
+            "nullable": true
+          },
+          "ico": {
+            "maxLength": 14,
+            "minLength": 0,
+            "type": "string",
+            "description": "Identifikační číslo",
+            "nullable": true
+          },
+          "adresa": {
+            "$ref": "#/components/schemas/BCRoadPlanAdresaModel"
+          }
+        },
+        "additionalProperties": false,
+        "description": "BCRoadPlanZakaznikModel"
       },
       "ProblemDetails": {
         "type": "object",
