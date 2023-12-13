@@ -2606,6 +2606,8 @@ namespace bridge.api.bclogia.cz
     public partial class BCRoadPlanStanoviste
     {
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public BCRoadPlanStanovisteType Type { get; set; }
 
         /// <summary>
@@ -2636,13 +2638,17 @@ namespace bridge.api.bclogia.cz
     public enum BCRoadPlanStanovisteType
     {
 
-        _1 = 1,
+        [System.Runtime.Serialization.EnumMember(Value = @"LM")]
+        LM = 0,
 
-        _2 = 2,
+        [System.Runtime.Serialization.EnumMember(Value = @"SS")]
+        SS = 1,
 
-        _6 = 6,
+        [System.Runtime.Serialization.EnumMember(Value = @"PM")]
+        PM = 2,
 
-        _10 = 10,
+        [System.Runtime.Serialization.EnumMember(Value = @"J")]
+        J = 3,
 
     }
 

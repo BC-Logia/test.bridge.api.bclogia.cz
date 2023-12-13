@@ -63,7 +63,70 @@ namespace test.bridge.api.bclogia.cz
             int count = 0;
             int start = 0;
             int limit = 20;
+            DateTime DatumOd = new DateTime(2022, 6, 1);
+            DateTime DatumDo = new DateTime(2022, 6, 30);
 
+            //Predpisy(SpolID, c, ref count, ref start, limit);
+
+
+            RoadPlanLikvMista(SpolID, c, ref count, ref start, limit);
+
+            count = 0;
+            start = 0;
+            RoadPlanJizdy(SpolID, DatumOd, DatumDo, c, ref count, ref start, limit);
+
+            Console.WriteLine("Hotovo...");
+            Console.ReadLine();
+        }
+
+        private static void RoadPlanLikvMista(int SpolID, Bridge c, ref int count, ref int start, int limit)
+        {
+            BCRoadPlanLikvMistaModelBCPaging p_l;
+            int i = 0;
+
+            do
+            {
+                p_l = c.LikvmistaAsync(SpolID, start, limit).Result;
+
+                if (p_l != null)
+                {
+                    start += 20;
+                    count += p_l.Data.Count;
+
+                    foreach (var p in p_l.Data)
+                    {
+                        Console.WriteLine("Likvidacni misto: {0} ({1}/{2})", p.Id, ++i, p_l.TotalRecords);
+                    }
+                }
+            }
+            while (p_l != null && count < p_l.TotalRecords);
+        }
+
+        private static void RoadPlanJizdy(int SpolID, DateTime DatumOd, DateTime DatumDo, Bridge c, ref int count, ref int start, int limit)
+        {
+            BCRoadPlanJizdyModelBCPaging p_l;
+            int i = 0;
+
+            do
+            {
+                p_l = c.JizdyAsync(SpolID, DatumOd, DatumDo, start, limit).Result;
+
+                if (p_l != null)
+                {
+                    start += 20;
+                    count += p_l.Data.Count;
+
+                    foreach (var p in p_l.Data)
+                    {
+                        Console.WriteLine("Jizda: {0} ({1}/{2})", p.Id, ++i, p_l.TotalRecords);
+                    }
+                }
+            }
+            while (p_l != null && count < p_l.TotalRecords);
+        }
+
+        private static void Predpisy(int SpolID, Bridge c, ref int count, ref int start, int limit)
+        {
             BCPredpis2ListModelBCPaging p_l;
             int i = 0;
 
@@ -98,9 +161,6 @@ namespace test.bridge.api.bclogia.cz
                 }
             }
             while (p_l != null && count < p_l.TotalRecords);
-
-            Console.WriteLine("Hotovo...");
-            Console.ReadLine(); 
         }
 
         static string Serialize(object o)

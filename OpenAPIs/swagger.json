@@ -2395,14 +2395,13 @@
       },
       "BCRoadPlanStanovisteType": {
         "enum": [
-          1,
-          2,
-          6,
-          10
+          "LM",
+          "SS",
+          "PM",
+          "J"
         ],
-        "type": "integer",
-        "description": "BCRoadPlanStanovisteType",
-        "format": "int32"
+        "type": "string",
+        "description": "BCRoadPlanStanovisteType"
       },
       "BCRoadPlanZakaznikModel": {
         "type": "object",
