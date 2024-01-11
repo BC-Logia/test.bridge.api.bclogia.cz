@@ -62,7 +62,7 @@ namespace test.bridge.api.bclogia.cz
 
             int count = 0;
             int start = 0;
-            int limit = 20;
+            int limit = 100;
             DateTime DatumOd = new DateTime(2022, 6, 1);
             DateTime DatumDo = new DateTime(2022, 6, 30);
 
@@ -90,7 +90,7 @@ namespace test.bridge.api.bclogia.cz
 
                 if (p_l != null)
                 {
-                    start += 20;
+                    start += limit;
                     count += p_l.Data.Count;
 
                     foreach (var p in p_l.Data)

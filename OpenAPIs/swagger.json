@@ -2156,6 +2156,7 @@
           "id",
           "odpady",
           "pocatekJizdy",
+          "posledniZmena",
           "smlouva",
           "zakaznik"
         ],
@@ -2170,7 +2171,7 @@
             "type": "string",
             "description": "Datum a čas poslední změny",
             "format": "date-time",
-            "nullable": true
+            "example": "2024-01-11T08:37:57"
           },
           "provozovna": {
             "type": "integer",
@@ -2187,7 +2188,8 @@
           "datumRealizace": {
             "type": "string",
             "description": "Datum realizace",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2024-01-11T00:00:00"
           },
           "smlouva": {
             "$ref": "#/components/schemas/BCRoadPlanSmlouvaModel"
@@ -2330,7 +2332,9 @@
       },
       "BCRoadPlanSmlouvaModel": {
         "required": [
-          "id"
+          "cislo",
+          "id",
+          "platnostOd"
         ],
         "type": "object",
         "properties": {
@@ -2342,20 +2346,20 @@
           "cislo": {
             "type": "integer",
             "description": "Číslo smlouvy",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "platnostOd": {
             "type": "string",
             "description": "Začátek platnosti smlouvy",
             "format": "date-time",
-            "nullable": true
+            "example": "2024-01-11T00:00:00"
           },
           "platnostDo": {
             "type": "string",
             "description": "Konec platnosti smlouvy",
             "format": "date-time",
-            "nullable": true
+            "nullable": true,
+            "example": "2024-01-11T00:00:00"
           }
         },
         "additionalProperties": false,
@@ -2404,20 +2408,22 @@
         "description": "BCRoadPlanStanovisteType"
       },
       "BCRoadPlanZakaznikModel": {
+        "required": [
+          "id",
+          "nazev"
+        ],
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
             "description": "Identifikátor zákazníka",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "nazev": {
             "maxLength": 500,
             "minLength": 0,
             "type": "string",
-            "description": "Název zákazníka",
-            "nullable": true
+            "description": "Název zákazníka"
           },
           "ico": {
             "maxLength": 14,

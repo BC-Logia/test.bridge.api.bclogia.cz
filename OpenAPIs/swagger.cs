@@ -18,7 +18,7 @@ namespace bridge.api.bclogia.cz
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class Bridge 
+    public partial class Bridge
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -2404,8 +2404,9 @@ namespace bridge.api.bclogia.cz
         /// <summary>
         /// Datum a čas poslední změny
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("posledniZmena", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? PosledniZmena { get; set; }
+        [Newtonsoft.Json.JsonProperty("posledniZmena", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.DateTimeOffset PosledniZmena { get; set; }
 
         /// <summary>
         /// Kód provozovny
@@ -2582,14 +2583,15 @@ namespace bridge.api.bclogia.cz
         /// <summary>
         /// Číslo smlouvy
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("cislo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Cislo { get; set; }
+        [Newtonsoft.Json.JsonProperty("cislo", Required = Newtonsoft.Json.Required.Always)]
+        public int Cislo { get; set; }
 
         /// <summary>
         /// Začátek platnosti smlouvy
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("platnostOd", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? PlatnostOd { get; set; }
+        [Newtonsoft.Json.JsonProperty("platnostOd", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.DateTimeOffset PlatnostOd { get; set; }
 
         /// <summary>
         /// Konec platnosti smlouvy
@@ -2661,13 +2663,14 @@ namespace bridge.api.bclogia.cz
         /// <summary>
         /// Identifikátor zákazníka
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
+        public int Id { get; set; }
 
         /// <summary>
         /// Název zákazníka
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("nazev", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("nazev", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.ComponentModel.DataAnnotations.StringLength(500)]
         public string Nazev { get; set; }
 
