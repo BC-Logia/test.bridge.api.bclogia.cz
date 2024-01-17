@@ -2418,7 +2418,8 @@ namespace bridge.api.bclogia.cz
         /// Evidenční číslo vozidla
         /// </summary>
         [Newtonsoft.Json.JsonProperty("vozidloEvc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? VozidloEvc { get; set; }
+        [System.ComponentModel.DataAnnotations.StringLength(7)]
+        public string VozidloEvc { get; set; }
 
         /// <summary>
         /// Datum realizace

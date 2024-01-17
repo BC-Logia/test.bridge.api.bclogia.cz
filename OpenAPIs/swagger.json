@@ -2180,9 +2180,10 @@
             "nullable": true
           },
           "vozidloEvc": {
-            "type": "integer",
+            "maxLength": 7,
+            "minLength": 0,
+            "type": "string",
             "description": "Evidenční číslo vozidla",
-            "format": "int32",
             "nullable": true
           },
           "datumRealizace": {
